@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./App.css";
-import Accordion from "./components/Accordion";
+//import Accordion from "./components/Accordion";
 import Dropdown from "./components/Dropdown";
-import Search from "./components/Search";
+import Translate from './components/Translate';
+//import Search from "./components/Search";
 
-import { items } from "./data/items";
+//import { items } from "./data/items";
 import { options } from "./data/options";
 
 function App() {
@@ -18,11 +19,13 @@ function App() {
       </button>
       {showDropdown ? (
         <Dropdown
+          label="Select Color"
           options={options}
           selected={selected}
           onSelectChange={setSelected}
         />
       ) : null}
+      <Translate />
     </div>
   );
 }
