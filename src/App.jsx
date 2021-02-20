@@ -1,25 +1,21 @@
+import React, { useState } from "react";
 import "./App.css";
 import Accordion from "./components/Accordion";
-import Search from "./components/search";
+import Dropdown from "./components/Dropdown";
+import Search from "./components/Search";
 
-const items = [{
-    title: "Whats going on, whats React?",
-    content: 'React is a front end library.'
-},
-{
-    title: "Why React?",
-    content: 'It is most popular JS library between developers.'
-},
-{
-    title: "How to use React?",
-    content: 'You use React by creating components.'
-}]
+import {items} from './data/items';
+import {options} from './data/options';
 
 function App() {
+  const [selected, setSelected] = useState(options[0]);
   return (
     <div className="App">
-      
-      <Search />
+      <Dropdown
+        options={options}
+        selected={selected}
+        onSelectChange={setSelected}
+      />
     </div>
   );
 }
@@ -27,3 +23,4 @@ function App() {
 export default App;
 
 // <Accordion items={items} />
+// <Search />
