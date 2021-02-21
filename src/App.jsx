@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./App.css";
-//import Accordion from "./components/Accordion";
+import Accordion from "./components/Accordion";
 import Dropdown from "./components/Dropdown";
 import Translate from './components/Translate';
-//import Search from "./components/Search";
+import Search from "./components/Search";
+import Route from './components/Route';
+import Header from './components/Header';
 
-//import { items } from "./data/items";
+import { items } from "./data/items";
 import { options } from "./data/options";
 
 function App() {
@@ -14,18 +16,24 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => setShowDropdown(!showDropdown)}>
-        Toggle dropdown
-      </button>
-      {showDropdown ? (
-        <Dropdown
-          label="Select Color"
-          options={options}
-          selected={selected}
-          onSelectChange={setSelected}
+    <Header />
+      <Route path="/" >
+        <Accordion items={items} />
+      </Route>
+      <Route path="/list" >
+        <Search />
+      </Route>
+      <Route path="/dropdown" >
+        <Dropdown  
+          options={options} 
+          selected={selected} 
+          onSelectChange={setSelected} 
+          label="Select a Color"
         />
-      ) : null}
-      <Translate />
+      </Route>
+      <Route path="/translate" >
+        <Translate />
+      </Route>
     </div>
   );
 }
